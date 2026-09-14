@@ -1,0 +1,43 @@
+.footer {
+  padding: 48px clamp(44px, 6vw, 110px);
+  background: var(--bg-deeper);
+  border-top: 1px solid var(--hairline-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: invert(1) brightness(1.25);
+  mix-blend-mode: screen;
+}
+
+.copy {
+  font-size: 14px;
+  color: var(--muted-2);
+}
+
+.links {
+  display: flex;
+  gap: 26px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.links a {
+  color: inherit;
+  transition: color 200ms var(--ease-out);
+}
+.links a:hover {
+  color: var(--accent);
+}

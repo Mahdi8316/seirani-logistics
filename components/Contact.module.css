@@ -1,0 +1,167 @@
+.section {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(96px, 11vh, 140px) clamp(44px, 6vw, 110px) clamp(48px, 6vh, 80px);
+  background: var(--bg-deep);
+  border-top: 1px solid var(--hairline-soft);
+}
+
+.wrap {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(40px, 5vw, 88px);
+  align-items: center;
+}
+
+.info {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+}
+.line {
+  width: 40px;
+  height: 1px;
+  background: var(--accent-line);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.14;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.lead {
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.9;
+  color: oklch(0.74 0.006 250);
+}
+
+.rows {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  color: var(--text-2);
+}
+a.row {
+  transition: color 200ms var(--ease-out);
+}
+a.row:hover {
+  color: var(--accent);
+}
+
+.rowDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  padding: clamp(30px, 4vw, 46px);
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.label {
+  font-size: 13px;
+  color: var(--muted-2);
+}
+
+.input,
+.textarea {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  padding: 14px 16px;
+  outline: none;
+  color: var(--text);
+  transition: border-color 200ms var(--ease-out);
+  width: 100%;
+}
+.textarea {
+  resize: vertical;
+}
+.input:focus,
+.textarea:focus {
+  border-color: oklch(0.82 0.075 72);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: oklch(0.5 0.006 250);
+}
+
+.submit {
+  margin-top: 4px;
+  padding: 15px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 300ms var(--ease-out);
+}
+.submit:hover {
+  background: var(--accent-bright);
+}
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.formOk,
+.formError {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.formOk {
+  color: var(--accent-bright);
+}
+.formError {
+  color: oklch(0.72 0.14 25);
+}
+
+@media (max-width: 460px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+}

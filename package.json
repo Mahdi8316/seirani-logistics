@@ -1,0 +1,24 @@
+{
+  "name": "seirani-logistics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "وب‌سایت شرکت ترخیص گمرکی و بازرگانی بین‌الملل — تک‌صفحه‌ای، RTL فارسی، اسکرول‌محور، همراه با وبلاگ و پنل ادمین.",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node app.js",
+    "start:next": "next start"
+  },
+  "dependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "next": "^16.3.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.3"
+  }
+}

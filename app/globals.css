@@ -1,0 +1,177 @@
+/* ---------------------------------------------------------------------------
+   توکن‌های طراحی (رنگ‌ها با oklch — مطابق بخش Design Tokens در README)
+   --------------------------------------------------------------------------- */
+:root {
+  /* پس‌زمینه‌ها */
+  --bg: oklch(0.11 0.005 250); /* ≈ #181a1d */
+  --bg-deep: oklch(0.1 0.006 252); /* ≈ #15171a */
+  --bg-deeper: oklch(0.09 0.006 250); /* ≈ #121417 */
+  --bg-map: oklch(0.115 0.006 252);
+
+  /* سطوح و کارت‌ها */
+  --card: oklch(0.13 0.006 252); /* ≈ #1d2023 */
+  --card-alt: oklch(0.13 0.006 252);
+  --card-hover: oklch(0.155 0.008 254);
+  --input-bg: oklch(0.1 0.006 252);
+
+  /* خطوط مویی و مرزها */
+  --hairline: oklch(0.2 0.006 250); /* ≈ #2e3033 */
+  --hairline-soft: oklch(0.18 0.006 250);
+  --input-border: oklch(0.24 0.006 250);
+  --border-muted: oklch(0.44 0.006 250);
+
+  /* رنگ تأکید طلایی گرم */
+  --accent: oklch(0.84 0.075 74); /* ≈ #e3b06a */
+  --accent-line: oklch(0.82 0.075 72);
+  --accent-bright: oklch(0.9 0.06 78); /* ≈ #f2cf98 */
+  --accent-stat: oklch(0.9 0.05 78);
+  --on-accent: oklch(0.16 0.02 70); /* ≈ #26211a — متن روی تأکید */
+
+  /* متن‌ها */
+  --text: oklch(0.96 0.004 90); /* ≈ #f2f1ee */
+  --text-strong: oklch(0.97 0.004 90);
+  --text-2: oklch(0.84 0.006 250);
+  --text-3: oklch(0.72 0.006 250);
+  --text-nav: oklch(0.84 0.004 250);
+  --muted: oklch(0.66 0.006 250);
+  --muted-2: oklch(0.62 0.006 250);
+  --muted-3: oklch(0.58 0.006 250);
+  --muted-4: oklch(0.68 0.006 250);
+  --idx: oklch(0.42 0.006 250);
+
+  /* پیوندها */
+  --link: oklch(0.82 0.075 74);
+  --link-hover: oklch(0.9 0.06 78);
+
+  /* منحنی‌های شتاب حرکت */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-marker: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------------------------------------
+   اسکرول تمام‌صفحه (هر بخش = یک صفحه‌ی کامل)
+   روی نمایشگرهای به‌قدر کافی بزرگ فعال می‌شود؛ روی موبایل/نمایشگرهای کوتاه
+   غیرفعال است تا محتوای بلندتر از صفحه همیشه در دسترس بماند.
+   --------------------------------------------------------------------------- */
+@media (min-width: 900px) and (min-height: 640px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+}
+
+/* پنل پایانی: فرم تماس + پاورقی، یک صفحه‌ی کامل و یک نقطه‌ی snap */
+.contactPanel {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-vazirmatn), Vazirmatn, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--link-hover);
+}
+
+::selection {
+  background: oklch(0.82 0.075 72);
+  color: oklch(0.14 0.01 70);
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+img,
+svg,
+video {
+  display: block;
+}
+
+/* ---------------------------------------------------------------------------
+   keyframeها (مطابق README / پروتوتایپ)
+   --------------------------------------------------------------------------- */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+
+@keyframes convoy {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/* واکنش به کاهش حرکت — غیرفعال‌سازی انیمیشن‌ها */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

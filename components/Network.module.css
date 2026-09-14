@@ -1,0 +1,127 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(96px, 12vh, 150px) clamp(44px, 6vw, 110px) clamp(56px, 8vh, 90px);
+  background: var(--bg-deep);
+  border-top: 1px solid var(--hairline-soft);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.inner {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 720px;
+  display: grid;
+  gap: 18px;
+  margin-bottom: clamp(36px, 5vh, 56px);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+}
+.line {
+  width: 40px;
+  height: 1px;
+  background: var(--accent-line);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.14;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.lead {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--text-3);
+}
+
+.panel {
+  position: relative;
+  border: 1px solid var(--hairline);
+  background: var(--bg-map);
+  overflow: hidden;
+}
+
+.gridBackdrop {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(oklch(0.22 0.006 250 / 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.22 0.006 250 / 0.5) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 40%, black 30%, transparent 78%);
+  mask-image: radial-gradient(120% 100% at 50% 40%, black 30%, transparent 78%);
+}
+
+.panelInner {
+  position: relative;
+  padding: clamp(48px, 7vw, 90px) clamp(40px, 6vw, 90px);
+}
+
+.map {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.dash {
+  animation: dashFlow 6s linear infinite;
+}
+
+.convoy {
+  offset-path: path("M 60 210 C 220 120, 360 250, 500 170 S 780 90, 940 130");
+  animation: convoy 9s var(--ease-marker) infinite;
+}
+
+.nodes {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.node {
+  display: grid;
+  gap: 6px;
+  text-align: center;
+  min-width: 90px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 auto;
+  box-shadow: 0 0 0 5px oklch(0.84 0.075 74 / 0.14);
+}
+
+.city {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.tag {
+  font-size: 12px;
+  color: var(--muted-3);
+}

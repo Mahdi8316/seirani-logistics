@@ -1,0 +1,94 @@
+.scene {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* برش گوشه‌ی پایین-راست برای پنهان‌کردن واترمارک کلیپ استوک */
+  transform: scale(1.2);
+  transform-origin: left top;
+  filter: grayscale(1) contrast(1.4) brightness(0.46) saturate(0);
+}
+
+/* تیرگی سمت راست (جایی که متن RTL می‌نشیند) */
+.ovSide {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to left,
+    oklch(0.07 0.006 250 / 0.94) 0%,
+    oklch(0.08 0.008 252 / 0.7) 42%,
+    oklch(0.08 0.006 250 / 0.2) 72%,
+    transparent 92%
+  );
+}
+.ovRadial {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(130% 110% at 20% 50%, transparent 38%, oklch(0.07 0.006 250 / 0.55) 100%);
+}
+
+.captionWrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+}
+
+.caption {
+  max-width: 560px;
+  padding: 0 clamp(44px, 8vw, 130px);
+  display: grid;
+  gap: 22px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+}
+.no {
+  font-size: 15px;
+  font-weight: 600;
+}
+.line {
+  width: 40px;
+  height: 1px;
+  background: var(--accent-line);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 58px);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 30px oklch(0.06 0.01 250 / 0.85);
+}
+
+.body {
+  margin: 0;
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.9;
+  color: oklch(0.9 0.006 250);
+  text-shadow: 0 1px 18px oklch(0.06 0.01 250 / 0.9);
+}
+
+@media (max-width: 460px) {
+  .eyebrow {
+    letter-spacing: 0.2em;
+  }
+}
