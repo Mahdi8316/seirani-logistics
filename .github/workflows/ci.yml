@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_PUBLIC_SITE_URL: https://example.invalid
+      ADMIN_USERNAME: ci-admin
+      ADMIN_PASSWORD: ci-only-not-for-production
+      ADMIN_SESSION_SECRET: ci-only-session-secret-with-more-than-forty-eight-characters
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run build
+      - name: Check PHP syntax
+        run: find php-site -name '*.php' -print0 | xargs -0 -n1 php -l
